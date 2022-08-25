@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Brjupo\CorporateGroup\Api\CorporateGroupRepositoryInterface" type="Brjupo\CorporateGroup\Model\ResourceModel\CorporateGroupRepository" />
+
+    <preference for="Brjupo\CorporateGroup\Api\Data\CorporateGroupInterface" type="Brjupo\CorporateGroup\Model\Data\CorporateGroup" />
+
+    <preference for="Brjupo\CorporateGroup\Api\Data\CorporateGroupSearchResultsInterface"
+    type="Brjupo\CorporateGroup\Model\CorporateGroupSearchResults" />
+
+    <!-- @api -->
+    <virtualType name="Brjupo\CorporateGroup\Model\Api\SearchCriteria\CollectionProcessor\CorporateGroupFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="fieldMapping" xsi:type="array">
+                <item name="corporate_group_identifier" xsi:type="string">main_table.corporate_group_identifier</item>
+                <item name="entity_id" xsi:type="string">main_table.entity_id</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- @api -->
+    <virtualType name="Brjupo\CorporateGroup\Model\Api\SearchCriteria\CollectionProcessor\CorporateGroupSortingProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor">
+        <arguments>
+            <argument name="fieldMapping" xsi:type="array">
+                <item name="corporate_group_identifier" xsi:type="string">main_table.corporate_group_identifier</item>
+                <item name="entity_id" xsi:type="string">main_table.entity_id</item>
+            </argument>
+            <argument name="defaultOrders" xsi:type="array">
+                <item name="entity_id" xsi:type="string">ASC</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- @api -->
+    <virtualType name="Brjupo\CorporateGroup\Model\Api\SearchCriteria\CorporateGroupCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">Brjupo\CorporateGroup\Model\Api\SearchCriteria\CollectionProcessor\CorporateGroupFilterProcessor</item>
+                <item name="sorting" xsi:type="object">Brjupo\CorporateGroup\Model\Api\SearchCriteria\CollectionProcessor\CorporateGroupSortingProcessor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Brjupo\CorporateGroup\Model\ResourceModel\CorporateGroupRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Brjupo\CorporateGroup\Model\Api\SearchCriteria\CorporateGroupCollectionProcessor</argument>
+        </arguments>
+    </type>
+</config>

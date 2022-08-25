@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "42c9261b-5a50-4dc1-87a3-9f259baaff77",
+		"name": "CustomerGroup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customer\": {\n        \"email\": \"jdoe4@example.com\",\n        \"group_id\": 4,\n        \"firstname\": \"Jane\",\n        \"lastname\": \"Doe\",\n        \"addresses\": [\n            {\n                \"defaultShipping\": true,\n                \"defaultBilling\": true,\n                \"firstname\": \"Jane\",\n                \"lastname\": \"Doe\",\n                \"region\": {\n                    \"regionCode\": \"NY\",\n                    \"region\": \"New York\",\n                    \"regionId\": 43\n                },\n                \"postcode\": \"10755\",\n                \"street\": [\n                    \"123 Oak Ave\"\n                ],\n                \"city\": \"Purchase\",\n                \"telephone\": \"512-555-1111\",\n                \"countryId\": \"US\"\n            }\n        ]\n    },\n    \"password\": \"Password1\"\n}"
+				},
+				"url": {
+					"raw": "{{url_ambiente}}/rest/V1/customers",
+					"host": [
+						"{{url_ambiente}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Customer Group",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_ambiente}}/rest/V1/customerGroups/search?searchCriteria[filterGroups][0][filters][0][field]=tax_class_id&searchCriteria[filterGroups][0][filters][0][value]=3&searchCriteria[filterGroups][0][filters][0][condition_type]=eq",
+					"host": [
+						"{{url_ambiente}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"customerGroups",
+						"search"
+					],
+					"query": [
+						{
+							"key": "searchCriteria[filterGroups][0][filters][0][field]",
+							"value": "tax_class_id"
+						},
+						{
+							"key": "searchCriteria[filterGroups][0][filters][0][value]",
+							"value": "3"
+						},
+						{
+							"key": "searchCriteria[filterGroups][0][filters][0][condition_type]",
+							"value": "eq"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Customer Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_ambiente}}/rest/V1/customerGroups/:id",
+					"host": [
+						"{{url_ambiente}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"customerGroups",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Customer Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"group\": {\n        \"code\": \"Grupo1215\",\n        \"tax_class_id\": 3\n    }\n}"
+				},
+				"url": {
+					"raw": "{{url_ambiente}}/rest/V1/customerGroups",
+					"host": [
+						"{{url_ambiente}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"customerGroups"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="customer_entity">
+        <column xsi:type="int" name="corp_group_id" unsigned="true" nullable="false" identity="false" default="0" comment="Corporate Group ID" />
+        <index referenceId="CUSTOMER_ENTITY_CORP_GROUP_ID" indexType="btree">
+            <column name="corp_group_id" />
+        </index>
+        <constraint xsi:type="foreign" referenceId="CUSTOMER_ENTITY_CORP_GROUP_ID__CORPORATE_GROUP_ENTITY_ENTITY_ID" table="customer_entity" column="corp_group_id" referenceTable="corporate_group_entity" referenceColumn="entity_id" onDelete="CASCADE" />
+    </table>
+    <table name="corporate_group_entity" resource="default" engine="innodb" comment="Corporate Group Entity">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID" />
+        <column xsi:type="varchar" name="corporate_group_identifier" nullable="false" length="255" comment="Corporate Group Identifier" />
+        <column xsi:type="varchar" name="corporate_group_contact_email" nullable="true" length="255" comment="Corporate Group Contact Email" />
+        <column xsi:type="text" name="corporate_group_contact_telephone" nullable="true" comment="Corporate Group Contact Telephone" />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id" />
+        </constraint>
+        <constraint xsi:type="unique" referenceId="CORPORATE_GROUP_ENTITY_CORPORATE_GROUP_IDENTIFIER">
+            <column name="corporate_group_identifier" />
+        </constraint>
+    </table>
+</schema>

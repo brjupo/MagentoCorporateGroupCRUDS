@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Corporate Group -->
+    <!-- fetch -->
+    <route url="/V1/corporateGroups/:id" method="GET">
+        <service class="Brjupo\CorporateGroup\Api\CorporateGroupRepositoryInterface" method="getById"/> 
+        <!-- <service class="Magento\Customer\Api\GroupRepositoryInterface" method="getById"/> -->
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- create -->
+    <route url="/V1/corporateGroups" method="POST">
+        <service class="Brjupo\CorporateGroup\Api\CorporateGroupRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- delete -->
+    <route url="/V1/corporateGroups/:id" method="DELETE">
+        <service class="Brjupo\CorporateGroup\Api\CorporateGroupRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- search -->
+    <route url="/V1/corporateGroups/search" method="GET">
+        <service class="Brjupo\CorporateGroup\Api\CorporateGroupRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>
