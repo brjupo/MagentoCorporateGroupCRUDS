@@ -40,12 +40,12 @@ https://youtu.be/Y_f7cTBjp5w
   
 This module looks like "Customer Group" files. Yep, thats correct, I take this files as reference.
   
-  
-In this ZIP you can find:  
+***
+In this Repo you can find:  
 i) The module "Brjupo_CorporateGroup"  
 ii) Postman collection  
-iii) Youtube links [here in README.txt]  
-iv) README.txt file  
+iii) Youtube links [here in README.md]  
+iv) README.md file  
 
   
 PD: This is a basic and simplest solution to the exercise, I know that this can be improve as merchant or bussiness requirements.
